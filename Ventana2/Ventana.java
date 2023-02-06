@@ -9,19 +9,23 @@ public class Ventana extends JFrame{
         //MyThread t = new MyThread();
         Font font1 = new Font("Arial", 1, 22);
         //JLabel texto1 = new JLabel("0");//hacer que el label rebote
-        Movimiento texto1 = new Movimiento("0");
-        texto1.setFont(font1);
-        texto1.setBounds(10,10,50,25);
-        add(texto1);
+        
+        //texto1.setFont(font1);
+        //add(texto1);
+
+        Movimiento mov = new Movimiento("0");
+        mov.setFont(font1);
+        mov.setBounds(10,10,50,25);
+        add(mov);
 
         JButton btnStart = new JButton("Start");
         btnStart.setBounds(10,40,75,24);
 
         ActionListener listener = new ActionListener(){
             public void actionPerformed(ActionEvent e1){
-                texto1.btnStart = btnStart;
+                mov.btnStart = btnStart;
                 btnStart.setEnabled(false);
-                Thread t = new Thread(texto1);
+                Thread t = new Thread(mov);
                 t.start();
             }// end actionmPerformed
         };

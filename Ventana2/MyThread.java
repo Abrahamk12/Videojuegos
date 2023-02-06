@@ -9,8 +9,10 @@ public class MyThread extends Thread{
         while(true){
             try{
                 Thread.sleep(500);
+                texto1.setText(Integer.toString(contador));
+                texto1.setHorizontalTextPosition(i);
                 i++;
-                if(i == 280){
+                if(i == 200){
                     contador++;
                     texto1.setText(Integer.toString(contador));
                 }
