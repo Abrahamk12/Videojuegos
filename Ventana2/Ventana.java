@@ -20,7 +20,6 @@ public class Ventana extends JFrame{
 
         JButton btnStart = new JButton("Start");
         btnStart.setBounds(10,40,75,24);
-
         ActionListener listener = new ActionListener(){
             public void actionPerformed(ActionEvent e1){
                 mov.btnStart = btnStart;

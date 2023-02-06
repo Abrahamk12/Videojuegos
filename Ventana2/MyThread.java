@@ -5,17 +5,29 @@ public class MyThread extends Thread{
 
     public void run(){
         int contador = 0, i = 10;
+        boolean derecha = false;
         
         while(true){
             try{
-                Thread.sleep(500);
+                Thread.sleep(1000);
                 texto1.setText(Integer.toString(contador));
-                texto1.setHorizontalTextPosition(i);
-                i++;
+                texto1.setLocation(i, 10);
+                
                 if(i == 200){
                     contador++;
                     texto1.setText(Integer.toString(contador));
+                    derecha = true;
+                }else if(i == 10){
+                    contador++;
+                    texto1.setText(Integer.toString(contador));
+                    derecha = false;
                 }
+                if(derecha == true){
+                    i--;
+                }else{
+                    i++;
+                }
+                
             }catch(Exception e){}
         }
     }//end run

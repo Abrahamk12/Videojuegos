@@ -7,18 +7,27 @@ public class Movimiento extends JLabel implements Runnable {
     }
     public void run(){
         int contador = 0, i = 10;
+        boolean derecha = false;
         
         while(true){
             try{
+                
                 setText(Integer.toString(contador));
-                setHorizontalTextPosition(i);
-                i++;
-                if(i == 280){
+                setLocation(i, 10);
+                
+                if(i == 200){
                     contador++;
                     setText(Integer.toString(contador));
+                    derecha = true;
+                }else if(i == 10){
+                    contador++;
+                    setText(Integer.toString(contador));
+                    derecha = false;
                 }
-                if(contador == 10){
-                    btnStart.setEnabled(true);
+                if(derecha == true){
+                    i--;
+                }else{
+                    i++;
                 }
             }catch(Exception e){}
         }
