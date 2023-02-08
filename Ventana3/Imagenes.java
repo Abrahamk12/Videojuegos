@@ -34,11 +34,10 @@ public class Imagenes extends JLabel implements Runnable{
                 }
                 if((x % 2 != 0) && (derecha == false)){
                     icon = new ImageIcon(this.getClass().getResource(imagen[2]));
-                    derecha = true;
                     x++;
                     setIcon(icon);
                     setLocation(x, y);
-                }else {
+                }else if(derecha == false){
                     icon = new ImageIcon(this.getClass().getResource(imagen[0]));
                     x++;
                     setIcon(icon);
@@ -46,11 +45,10 @@ public class Imagenes extends JLabel implements Runnable{
                 }
                 if((x % 2 != 0) && (derecha == true)){
                     icon = new ImageIcon(this.getClass().getResource(imagen[3]));
-                    derecha = false;
                     x--;
                     setIcon(icon);
                     setLocation(x, y);
-                }else {
+                }else if(derecha == true){
                     icon = new ImageIcon(this.getClass().getResource(imagen[1]));
                     x--;
                     setIcon(icon);
