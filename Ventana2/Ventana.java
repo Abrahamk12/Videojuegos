@@ -6,11 +6,15 @@ public class Ventana extends JFrame{
         initValues();
     }
     private void initValues(){
-        //MyThread t = new MyThread();
         Font font1 = new Font("Arial", 1, 22);
         //JLabel texto1 = new JLabel("0");//hacer que el label rebote
+        LabelKey lkey = new LabelKey("0");
+        JButton btnStart = new JButton("Start");
+        btnStart.setBounds(10,80,75,24);
         
         //texto1.setFont(font1);
+        lkey.setBounds(10,40,50,25);
+        lkey.setFont(font1);
         //add(texto1);
 
         Movimiento mov = new Movimiento("0");
@@ -18,19 +22,27 @@ public class Ventana extends JFrame{
         mov.setBounds(10,10,50,25);
         add(mov);
 
-        JButton btnStart = new JButton("Start");
-        btnStart.setBounds(10,40,75,24);
+        lkey.setFocusable(true);
+        btnStart.setFocusable(false);
+
         ActionListener listener = new ActionListener(){
             public void actionPerformed(ActionEvent e1){
+                //MyThread t = new MyThread();
+                Thread tkey = new Thread(lkey);
+                Thread t = new Thread(mov);
+
                 mov.btnStart = btnStart;
                 btnStart.setEnabled(false);
-                Thread t = new Thread(mov);
+
                 t.start();
+                tkey.start();
             }// end actionmPerformed
         };
 
         btnStart.addActionListener(listener);
+        //add(texto1);
         add(btnStart);
+        add(lkey);
         
         setTitle("Ventana 2");
         setSize(300, 300);

@@ -9,7 +9,7 @@ public class MyThread extends Thread{
         
         while(true){
             try{
-                Thread.sleep(1000);
+                Thread.sleep(7);
                 texto1.setText(Integer.toString(contador));
                 texto1.setLocation(i, 10);
                 

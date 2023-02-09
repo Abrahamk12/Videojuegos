@@ -11,7 +11,7 @@ public class Movimiento extends JLabel implements Runnable {
         
         while(true){
             try{
-                
+                Thread.sleep(7);
                 setText(Integer.toString(contador));
                 setLocation(i, 10);
                 
