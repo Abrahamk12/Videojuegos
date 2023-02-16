@@ -8,9 +8,10 @@ public class Ventana extends JFrame{
     private void initValues(){
         String [] imagen = {"imagenes/mario1.png", "imagenes/mario1_v.png", "imagenes/mario2.png", "imagenes/mario2_v.png"};
         String [] imagen1 = {"imagenes/link1.png", "imagenes/link1_v.png", "imagenes/link2.png", "imagenes/link2_v.png"};
+        String brackground = "imagenes/background.png";
         Imagenes img1 = new Imagenes(imagen, 40, 10);
         Imagenes img2 = new Imagenes(imagen1, 80, 20);
-        Imagen2 iimg2 = new Imagen2(imagen1, 240);
+        Imagen2 iimg2 = new Imagen2(imagen, 240, brackground);
         JButton btnStart = new JButton("Start");
 
         img1.setBounds(10, 40, 42, 42);
@@ -41,7 +42,7 @@ public class Ventana extends JFrame{
         iimg2.setFocusable(true);
 
         setTitle("Ventana 3");
-        setSize(780,350);
+        setSize(350,350);
         setLayout(null);
         setResizable(false);
         setLocationRelativeTo(null);
