@@ -27,7 +27,7 @@ public class Imagenes extends JLabel implements Runnable{
         while(true){
             try{
                 Thread.sleep(time);
-                if(x == 250){
+                if(x == 650){
                     derecha = true;
                 }else if(x == 10){
                     derecha = false;
