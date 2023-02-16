@@ -3,8 +3,8 @@ import java.awt.event.*;
 public class Imagen2 extends JLabel implements Runnable, KeyListener{
     ImageIcon icon;
     String [] imagen;
-    int x = 10, y, velozidad = 1;
-    private boolean estatus = false, derecha = true, correr = false, caminar = false;
+    int x = 10, y, velozidad = 1, descenso = 0;
+    private boolean estatus = false, derecha = true, arriba = false, correr = false, caminar = false;
     
     public Imagen2(String imagen[], int y){
         this.y = y;
@@ -14,62 +14,41 @@ public class Imagen2 extends JLabel implements Runnable, KeyListener{
     }
     public void run(){
         estatus = true;
-        /*
+        
         while(true){
-            if((derecha == true) && (caminar == true)){
-                if((x % 2 != 0)){
-                    icon = new ImageIcon(this.getClass().getResource(imagen[0]));
-                    x++;
-                    setIcon(icon);
-                    setLocation(x, y);
-                }else{
-                    icon = new ImageIcon(this.getClass().getResource(imagen[2]));
-                    x++;
-                    setIcon(icon);
-                    setLocation(x, y);
+            try{
+                Thread.sleep(150);
+                if((derecha == true) && (caminar == true)){
+                    caminard();
+                }else if(caminar == true){
+                    caminari();
                 }
-            }else{
-                if((x % 2 != 0)){
-                    icon = new ImageIcon(this.getClass().getResource(imagen[3]));
-                    x--;
-                    setIcon(icon);
-                    setLocation(x, y);
-                }else{
-                    icon = new ImageIcon(this.getClass().getResource(imagen[1]));
-                    x--;
-                    setIcon(icon);
-                    setLocation(x, y);
+                if((derecha == true) && (correr == true)){
+                    correrd();
+                }else if((derecha == false) && (correr == true)){
+                    correrd();
                 }
-            }
-            if((derecha == true) && (correr == true)){
-                if((x % 2 != 0)){
-                    icon = new ImageIcon(this.getClass().getResource(imagen[3]));
-                    x+=2;
-                    setIcon(icon);
-                    setLocation(x, y);
-                }
-            }else if((derecha == false) && (correr == true)){
-                if((x % 2 != 0)){
-                    icon = new ImageIcon(this.getClass().getResource(imagen[3]));
-                    x-=2;
-                    setIcon(icon);
-                    setLocation(x, y);
-                }
-            }
-        }*/
+            }catch(Exception e){}
+            
+        }
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
         if(estatus == true){
             if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-                caminard();
+                derecha = true;
+                caminar = true;
             }
             if(e.getKeyCode() == KeyEvent.VK_LEFT){
-                caminari();
+                derecha = false;
+                caminar = true;
             }
             if(e.getKeyCode() == KeyEvent.VK_S){
-                correrd();
+                correr = true;
+            }
+            if(e.getKeyCode() == KeyEvent.VK_UP){
+                arriba = true;
             }
        }
     }
@@ -77,17 +56,16 @@ public class Imagen2 extends JLabel implements Runnable, KeyListener{
     public void keyReleased(KeyEvent e) {
         if(estatus == true){
             if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-                derecha = false;
                 caminar = false;
-                //caminard();
             }
             if(e.getKeyCode() == KeyEvent.VK_LEFT){
-                derecha = true;
                 caminar = false;
-                //caminari();
             }
             if(e.getKeyCode() == KeyEvent.VK_S){
                 correr = false;
+            }
+            if(e.getKeyCode() == KeyEvent.VK_UP){
+                arriba = false;
             }
        }
 
@@ -110,20 +88,21 @@ public class Imagen2 extends JLabel implements Runnable, KeyListener{
             setIcon(icon);
             setLocation(x, y);
         }
+        
     }
 
-    public void caminari(){
+    void caminari(){
         if((x % 2 != 0)){
             icon = new ImageIcon(this.getClass().getResource(imagen[3]));
             x--;
             setIcon(icon);
             setLocation(x, y);
-        }else{
-            icon = new ImageIcon(this.getClass().getResource(imagen[1]));
-            x--;
-            setIcon(icon);
-            setLocation(x, y);
-        }
+            }else{
+                icon = new ImageIcon(this.getClass().getResource(imagen[1]));
+                x--;
+                setIcon(icon);
+                setLocation(x, y);
+            }
     }
 
     public void correrd(){
@@ -156,7 +135,17 @@ public class Imagen2 extends JLabel implements Runnable, KeyListener{
     }
     
     public void brincar(){
-
+        while(descenso != 1){
+            if(descenso == 1){
+                y++;
+                x++;
+                icon = new ImageIcon(this.getClass().getResource(imagen[2]));
+                setIcon(icon);
+                setLocation(x, y);
+            }else{
+                
+            }
+        }
     }
     
 }
