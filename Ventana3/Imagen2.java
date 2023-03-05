@@ -11,8 +11,11 @@ public class Imagen2 extends JLabel implements Runnable, KeyListener{
         this.y = y;
         this.imagen = imagen;
         this.brackground = brackground;
+        icon2 = new ImageIcon(this.getClass().getResource(brackground));
+        setIcon(icon2);
         icon = new ImageIcon(this.getClass().getResource(imagen[2]));
         setIcon(icon);
+        
     }
     public void run(){
         estatus = true;
@@ -112,12 +115,12 @@ public class Imagen2 extends JLabel implements Runnable, KeyListener{
             x--;
             setIcon(icon);
             setLocation(x, y);
-            }else{
-                icon = new ImageIcon(this.getClass().getResource(imagen[1]));
-                x--;
-                setIcon(icon);
-                setLocation(x, y);
-            }
+        }else{
+            icon = new ImageIcon(this.getClass().getResource(imagen[1]));
+            x--;
+            setIcon(icon);
+            setLocation(x, y);
+        }
     }
 
     void correr(){
